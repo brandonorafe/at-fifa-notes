@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>世界杯 · 日常查询手册 | at-fifa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f7f7f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            color: #1d1d1f;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page {
+            max-width: 680px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* 标题层级 — 清晰、克制 */
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.3rem;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #6e6e73;
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid #d4d4d0;
+            padding-left: 1rem;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-top: 2.8rem;
+            margin-bottom: 0.9rem;
+            color: #222;
+            border-bottom: 1px solid #ecece8;
+            padding-bottom: 0.35rem;
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-top: 1.8rem;
+            margin-bottom: 0.4rem;
+            color: #2c2c2e;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #2c2c2e;
+        }
+
+        a {
+            color: #1e5f8e;
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover,
+        a:focus {
+            color: #0a3a5c;
+            border-bottom-color: #0a3a5c;
+        }
+
+        /* 卡片区 — 用于特点 / 使用建议 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        @media (max-width: 520px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 1.3rem 1.2rem 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s;
+            border: 1px solid #efefeb;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.05rem;
+            font-weight: 500;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #3a3a3c;
+            margin-bottom: 0.2rem;
+        }
+
+        .card .icon-placeholder {
+            display: inline-block;
+            font-size: 1.3rem;
+            margin-right: 0.25rem;
+            opacity: 0.7;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.8rem 0 0.2rem;
+        }
+
+        .feature-list li {
+            padding: 0.25rem 0;
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .feature-list li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            font-weight: 500;
+            color: #8f8f93;
+        }
+
+        /* 场景区 — 轻量分割 */
+        .scene-block {
+            background: #f2f2ef;
+            border-radius: 12px;
+            padding: 1.3rem 1.5rem 1.4rem;
+            margin: 1.8rem 0 1.2rem;
+        }
+
+        .scene-block p {
+            margin-bottom: 0.6rem;
+        }
+
+        /* FAQ 摘要 */
+        .faq-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-question {
+            font-weight: 500;
+            margin-bottom: 0.15rem;
+            color: #222;
+        }
+
+        .faq-answer {
+            margin-left: 0.2rem;
+            font-size: 0.96rem;
+            color: #4a4a4c;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e2e2dd;
+            margin: 2.8rem 0 1.8rem;
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: #8e8e93;
+            margin-top: 2.2rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #e2e2dd;
+            text-align: left;
+        }
+
+        .footer-note a {
+            color: #6e6e73;
+            border-bottom: none;
+        }
+
+        .footer-note a:hover {
+            color: #1d1d1f;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 420px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .subhead {
+                font-size: 1rem;
+                padding-left: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <h1>世界杯 · 日常查询手册</h1>
+    <div class="subhead">
+        从历届纪录到赛程对照，一份安静的资料索引
+    </div>
+
+    <p>
+        对于许多球迷而言，<a href="https://at-fifa.com">世界杯</a>不仅是一场赛事，更是一叠可以反复翻阅的笔记。每当需要快速核实某届冠军、比较小组积分，或是回味某一粒经典进球的背景，一份结构清晰、更新及时的参考页面，远比碎片搜索更省心力。这里从日常查询的视角整理了一份索引，既不追求华丽包装，也不嵌入冗余引导，只希望在你需要时，能安静地提供帮助。
+    </p>
+
+    <!-- 特点 · 亮点卡片 -->
+    <h2>为什么值得放在书签里</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h3><span class="icon-placeholder">📋</span> 历届全览</h3>
+            <p>从1930到最近一届，冠军、举办国、决赛比分、最佳射手一目了然。淘汰赛对阵图可按年份展开，适合做深度回顾或冷知识核对。</p>
+        </div>
+        <div class="card">
+            <h3><span class="icon-placeholder">🗓️</span> 实时赛程 &amp; 积分</h3>
+            <p>小组赛阶段每日更新——比赛时间、场地、即时积分榜。你可以直接从页面复制数据到自己的笔记或表格中，无需登录或等待弹窗。</p>
+        </div>
+        <div class="card">
+            <h3><span class="icon-placeholder">🔍</span> 延伸阅读触点</h3>
+            <p>每支国家队页面下附有历史交锋、晋级之路、以及该届赛事的关键事件。适合写分析、做播客提纲，或者纯粹满足好奇心。</p>
+        </div>
+        <div class="card">
+            <h3><span class="icon-placeholder">📎</span> 干净的数据结构</h3>
+            <p>无广告干扰，无自动播放。页面以文字和表格为主，打印或导出成 PDF 也能保留良好版式，方便离线对照。</p>
+        </div>
+    </div>
+
+    <!-- 使用建议 -->
+    <h2>使用建议</h2>
+    <div class="scene-block">
+        <p><strong>🔹 赛前对照：</strong> 比赛日打开某届小组积分页，快速比较净胜球与相互战绩，不用再翻社交媒体的截图。</p>
+        <p><strong>🔹 赛后延伸：</strong> 看完一场经典比赛（例如 1998 年决赛），直接在该届页面里查阅当届最佳阵容、进球视频链接（如有收录）以及后续淘汰赛路径。</p>
+        <p><strong>🔹 写作 / 聊天素材：</strong> 需要确认某位球员的世界杯出场次数？在国家队页面的「球员数据」板块可以检索。所有数字均标注了来源场次，便于交叉验证。</p>
+    </div>
+
+    <!-- 提示 · 可信但克制 -->
+    <h2>一点提示</h2>
+    <p>
+        at-fifa.com 上的数据主要整理自国际足联官方公开记录及其他可靠体育数据源，并持续进行人工校对。尽管如此，因赛程调整、数据更新窗口等原因，极少数条目可能存在延迟。如果你发现不一致，欢迎在页面底部的反馈通道留言——这能帮助所有使用该索引的人。
+    </p>
+    <p>
+        页面本身不要求注册或付费，也无需担心推送通知。它更像一本书架上的参考资料：干净、低调，只在被需要的时候打开。
+    </p>
+
+    <!-- FAQ 摘要 (轻量) -->
+    <h2>常见疑问 · 摘要</h2>
+    <div class="faq-item">
+        <div class="faq-question">— 数据多久更新一次？</div>
+        <div class="faq-answer">大赛期间通常每日同步一次官方结果；历史数据随新发现或勘误不定期修正。</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">— 可以做为自己的笔记引用吗？</div>
+        <div class="faq-answer">当然可以。所有数据均以文本形式呈现，你可以自由摘录并在个人项目或非商业内容中注明来源。</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">— 是否有手机版？</div>
+        <div class="faq-answer">页面本身适配窄屏浏览，无需额外 App。在移动设备上横竖屏均可正常阅读表格。</div>
+    </div>
+
+    <hr>
+
+    <p style="font-size: 0.98rem;">
+        你正在查阅的是 <a href="https://at-fifa.com">世界杯</a> 日常索引页 —— 一份安静、可靠的世界杯资料汇编。不设弹窗，不收集数据，只提供你所需的信息。
+    </p>
+
+    <div class="footer-note">
+        内容仅供个人参考与学习 · 数据来源：国际足联公开记录 · 页面更新于 2025
+    </div>
+
+</div>
+</body>
+</html>
